@@ -167,7 +167,7 @@ print(word[-8], word[len(word) - 8])  # same result | but 1st's compact
 print("It's not strictly only literals are allowed in value receivers")
 # expressions & vars are also welcome
 
-from math import ceil
+# from math import ceil
 
 nick = "wendy"
 print(
@@ -422,7 +422,7 @@ print(M[-1][0])  # first object of the last list
 
 # List Comprehension
 
-# it simplifies processing structures like matrix m.b
+# it simplifies processing structures like matrice m.b
 M = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
 # let's say we need the second column
@@ -528,3 +528,68 @@ print("I ate 2 already")
 dinner["quantity"] -= 2
 # changing value of an amount key
 print(dinner)
+
+
+# refering to non-existant key
+print('dictionaries in action are primarily empty')
+stomach = {}
+
+print('then they\'re filled up with content during process')
+stomach['breakfast'] = 'veggie sandwiches'
+stomach['dinner'] = 'mama\'s meal'
+
+# if you refer to non-existant key, u won't see an error
+# but creation of a new key
+stomach['lunch'] = None
+
+'''
+Later u will use dicts as a search tool since they work faster
+than search mechanisms implemented in Python.
+'''
+
+
+# Nested ?
+
+rec = {'name': 'Tahir',
+       'job': 'pixel artist',
+       'age': 16.8}
+
+# this is an example of simple dict
+# looks like paper forms, ain't it?
+
+print(rec)  # but what if we need more complex structure
+
+# like full name and multiple occupations
+
+rec = {
+    'name': {'first': 'Stan', 'second': 'Pines'},
+    'job': ['pixel artist', 'coder'],
+    'age': 16
+}
+print(rec)
+
+# so there are three highlevel keys: name, job, age
+# and child keys that are nested in name key: first & second names
+print(f"Mr.{rec['name']['second']}")
+
+# we have list of job occupations, that can be expanded in a long-term
+print(f'He a {rec["job"][0]}')
+
+rec["job"].append('video-editor')
+print(rec)
+
+# nested list is a seperate area in the RAM so it can expand with no lim.
+print("He a bad", rec['job'].pop(0), 'tho.')
+print(rec)
+
+
+# unused data is removed from RAM, when last link to it dissapears
+rec = 0  # for example container's been assigned other value
+# HAIL to the PYTHON'S TRASH COLLECTOR
+
+
+# Sorting by keys
+D = {'a': 1, 'c': 3, 'b': 2}
+# since dicts are not sequences they don't support any sorting approaches
+
+print(D)  # but what if we need them to be sorted?
