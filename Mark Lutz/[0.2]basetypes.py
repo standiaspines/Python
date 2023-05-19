@@ -593,3 +593,58 @@ D = {'a': 1, 'c': 3, 'b': 2}
 # since dicts are not sequences they don't support any sorting approaches
 
 print(D)  # but what if we need them to be sorted?
+
+# we can get list of all keys using .keys() method
+ks = list(D.keys())  # then sort em up using list's .sort() method
+print(ks)
+
+ks.sort()
+print(ks)
+
+# printing em out through iteration
+for key in ks:
+    print(key, '=>', D[key])
+
+# this process consisting of 3 stages can be shorted to single operation
+for key in sorted(D):  # built-in function sorted
+    print(key, '=>', D[key])
+# it can sort different objects and return result
+
+
+# a little about loops
+# you can use for loop for carrying out sequence traversals
+# and while going through them execute block of code on each of em
+room = ['[@]', '[$]', '[&]', '["]', '[:]', '[/]', '[`]', '[*]']
+for box in room:
+    print('Oh look! A box:', box)
+
+# variable defined by the user is a link to the current item of a seq.
+# [box] in the e.g.
+
+print('''
+for and its relative while loop are the main ways to implement repetetive
+actions in scripts.
+
+for is a sequence operation, and it works with objects that are sequences
+and with some objects that are NOT sequences.
+''')
+
+for c in 'spam':
+    print(c.upper())
+# so here's the string traversal that prints out letters in an upper case
+
+
+# while loop represents more universal tool for executing repetetive act.
+x = 4
+while x > 0:  # it's not directly connected to sequential obj.
+    print('spam!' * x)
+    x -= 1
+
+
+# Iteration and Optimization
+
+print('comprehensions and loops are very similar')
+# they both able to work with any object that support iteration protocol
+
+print('iter. -  when object generates(returns) one item at a time')
+
