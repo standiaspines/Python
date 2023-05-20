@@ -29,8 +29,9 @@ money_amm = 78
 
 # print(name)  # u can not refer to non-existant var's
 
-name = 'Jacob'
-print(name)
+name = 'Jacob'  # from the moment it's given a valut
+print(name)  # it can be referred to.
+
 name = 17  # u can reassign a var another value at any time
 print(name)  # no matter of the value's type
 
