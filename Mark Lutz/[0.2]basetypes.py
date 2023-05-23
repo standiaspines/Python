@@ -648,3 +648,73 @@ print('comprehensions and loops are very similar')
 
 print('iter. -  when object generates(returns) one item at a time')
 
+
+# if iterable obj. returned, when it's given to iter() func.
+# obj. is iterable
+
+# iterable - means you get an object that allows you to traverse
+# when called function next() with that obj. as an argument
+
+
+# any mechanism that scans the object left-to-right uses iteration
+# next() with dicts return the next key
+
+squares = [x ** 2 for x in [1, 2, 3, 4, 5]]
+print(squares)  # any comprehension like the given one
+
+# can be implemented using for-loops
+squares = []
+for x in [1, 2, 3, 4, 5]:
+    squares.append(x ** 2)
+
+print(squares)  # same result
+
+
+# however: comprehensions and related mechanism like map and filter
+# proceed and execute faster | nearly 2x speed
+
+# python is developing language so optimization figures 
+# can differ from-version-to-version
+
+print("Readability > Performance")
+
+# so when it comes to optimization you will meet instruments, like:
+# time, timeit & profile
+
+
+# KeyError: if-conditions
+
+D = {'a': 1, 'c': 3, 'b': 2}
+print(D)
+
+D['e'] = 84
+print(D)
+
+# wanna_see_an_error = D['f']  # KeyError: 'f'
+# print(wanna_see_an_error) 
+# although, assigning to non-ex key, creates one with that name & value
+# refering to non-ex key can lead to an error | can't do that!
+
+
+# so we wanna check if certain key is in dictionary
+print('f' in D)  # False | there's no key called 'f' in D
+# operator in [check for a membership xd]
+
+if not 'f' in D:
+    print('missing')
+
+# if --> expression (true\false) --> blocl of code that executes w\true
+# full formation of if-conds can include else(default action block)
+# and 1 or more blocks of elif(else if)  # for other conditions
+
+print('There are other ways of creating dicts')
+# and non-ex key refering error exceptions
+
+# method: get | addressing which you can give default output
+value = D.get('x', 0)
+print(value)
+
+# try <-- takes over an error and process an exception
+# conditional operator if shrank down to 1-line
+value = D['x'] if 'x' in D else 'not found'
+print(value)
