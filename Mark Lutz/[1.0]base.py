@@ -703,7 +703,7 @@ print('f' in D)  # False | there's no key called 'f' in D
 if not 'f' in D:
     print('missing')
 
-# if --> expression (true\false) --> blocl of code that executes w\true
+# if --> expression (true\false) --> block of code that executes w\true
 # full formation of if-conds can include else(default action block)
 # and 1 or more blocks of elif(else if)  # for other conditions
 
@@ -711,10 +711,256 @@ print('There are other ways of creating dicts')
 # and non-ex key refering error exceptions
 
 # method: get | addressing which you can give default output
-value = D.get('x', 0)
+value = D.get('x', 0)  # method returns 0 if key's not found
 print(value)
 
 # try <-- takes over an error and process an exception
 # conditional operator if shrank down to 1-line
 value = D['x'] if 'x' in D else 'not found'
 print(value)
+
+
+# Tuples
+
+# generally a list that can not be changed
+# tuples are seq's but immutable like str
+
+# syntax: ()  <-- round brackets are used to create a tuple literal
+# they also can store any type of data; support sequential operations
+
+T = (1, 2, 3, 4)
+print(len(T))  # returning the length
+
+# or accessing the item through its index
+print(T[-1])  # negative 1: 4
+
+
+# tuples have 2 methods that are appliable to sequences\collections
+print(T.index(1))  # getting the index of the item(1)
+
+T = (1, 0, 2, 3, 0, 4)
+# counting the amount of given item that's in the tuple
+print(T.count(0))  # there're two 0's
+
+
+# main difference is that; you can't change it after its created
+# T = (1, 0, 2, 3, 0, 4); T[-2] = 5  <-- leads to an error
+
+
+T = ('spam', 3.0, [11, 22, 33], True, (255, 255, 255))  # can't store anything
+# supports nesting; but can't change its size; IMMUTABLE
+
+
+# then, why do we need those? they provide you with unity
+# for example, if components of program should not be able to alter the seq.
+# use tuples!
+
+
+# Files
+
+# file objects - main interface amoung program code and external files in h.d
+# h.d - hard drive
+
+# basic, but unusual (since you can't create 'em as literals)
+# instead, use built-in function open; give access mode and directory path
+
+
+# e.g:
+f = open('lutz.txt', 'w')  # 'w' - write (mode that is used to output)
+# so u give filename and the mode 'w' to create an output text file
+
+f.write('Hello\n')  # writing text in the file
+print('See in The Explorer')
+
+f.write('world\n')
+
+f.close()  # closes the file, pushes output buffers to the drive
+
+# filename can contain full path, if file's stored somewhere else
+
+# 'r' - read; to read what's in the file
+print('Let\'s read using default mode \'r\'')  # which is put; if arg. skipped
+# content is perceived as 'a string' <-- always.
+
+f = open('lutz.txt')  # let's skip the 'r'
+
+text = f.read()  # file is read as a whole
+print(text)  # let's print em out; outputting on the console ignores s.c
+# s.c = speical characters
+
+words_in_file = text.split()
+print(words_in_file)
+
+
+f.close()
+# method .read() has optional arg. - byte amount
+# readline .readline()  reads one line at a call
+
+f = open('lutz.txt', 'r')
+print(f.readline())
+f.seek(0)  # seek relocates the scan position
+
+print(f.readlines())
+# it's not recommended to read the file content all at once
+
+# files provide iterators that can be used in for-loops or any other context
+print('Text content: UNICODE characters are en\\de-coded')
+
+# binaru content
+print('Binary content are presented as specific byte-strings')
+# content is not transformed or changed
+
+data = open('rain.xnb', 'rb').read()
+print(data)  # long byte-string
+
+# this is SV's rain tyle-sheet
+print(data[0:3])  # this is its format
+
+
+# Other Basic Types:
+
+# Sets - collection of unique and immutable objects
+# syntax: {}  <-- dictionary with no values
+
+X = set('crononberg')  # can be created using sequences
+Y = {'h', 'a', 'm', 'b', 'u', 'r', 'g', 'e', 'r'}
+
+print(X, Y)  # no duplicate(r, o, n) in X, and no second r in Y 
+
+# binary operations (that i don't understand, yet*):
+print(X & Y)  # crossover; defines what two sequences have in common
+
+# conjuction; concatenation (but with sets, duplicates are removed) 
+print(X | Y)
+
+# difference
+print(X - Y)  # opposite of crossover; what's different in between
+
+
+# Set Comprehension
+Z = {x ** 0.5 for x in [81, 49, 36, 25, 121, 64]}
+print(Z)
+
+
+# Floats with Fixed Preciseness & Rationals (numerator + denominator)
+
+# 2 ways of access:
+
+# New Floats
+# ~ 1: 
+bad = 1/3
+print(bad)  # kinda no fixed preciseness
+
+# ~ 2:
+import decimal
+good = decimal.Decimal('3.141')
+
+print(good + 1)  # here you go, simple example
+
+# now look:
+decimal.getcontext().prec = 2
+print(decimal.Decimal('1.00') / decimal.Decimal('3.00'))
+# you get precisely two numbers after flaoting point
+
+
+# Fractionals
+
+# ~ 1:
+bad = (2/3) + (1/2)
+print(bad)
+
+from fractions import Fraction
+good = Fraction(2, 3)
+print(good + 1)  # (1 (2/3) ==> (5/3))
+
+
+# logic in Python: True & Falls: that are (1, 0) in action
+print(1 > 2, 1 < 2)  # False, True
+
+print(bool('spam'))  # string contains smth but not nothing: True
+
+# here u go:
+print(int(True), int(False))  # as it been said
+
+
+# None: used in primary\temporary initiation of var\obj's
+
+x = None
+print(x)  # temporarily empty
+
+x = 'smth...'
+print(x)  # now contains smth
+
+L = [None] * 34
+print(L)  # like a brand new notebook
+
+
+# WHAAA???
+print(type(L))  # nothing special; printing out the type of the object in L
+# which is 'a list'; <class 'list'>
+
+# but what if
+print(type(type(L)))  # even types themselves are objects
+
+
+# checking the type (if needed)
+
+if type(L) == type([]):  # no comments; quite easy
+    print('yes')
+
+
+if type(L) == list:
+    print('you can do it using the name of the type')
+
+
+if isinstance(L, list):  # Objective-oriented style
+    print('yessir')
+
+
+# checking if object belongs to certain type class spoils the flexibility in code
+# there IS need to control types, and IS supported, but don't think THAT way!!!
+
+# polymorphism: you code can serve wider range of types...
+
+
+# classes defined by the user
+
+print('Classes define new data-types')
+
+class Worker:
+    def __init__(self, name, pay):
+        self.name = name
+        self.pay = pay
+
+    def lastName(self):
+        return self.name.split()[-1]
+    
+    def giveRaise(self, percent):
+        self.pay *= (1.0 + percent)  # * hdiw?
+
+
+# given class defines new type(for office workers, let's say)
+# it has two attributes: name, pay (smt attr are called status info)
+
+# plus, there are two bahavior scenearios (type's methods)
+# refering to class' name as to the function creates a new sample of a type
+# object with that type*
+
+# methods get link to the current sample, that's proccessed by them
+# (argument: self)
+
+bob = Worker('Bob Smith', 50000)
+sue = Worker('Sue Jones', 60000)
+
+print(bob.lastName())
+
+sue.giveRaise(.10)
+print(sue.pay)
+
+
+# all beings in Python - classes
+
+# only discussed types are basic, and are runners for NOT basic types
+# NOT basic types are based on the basic types
+# and are part of (functions, modules, classes, objects of compiled code)
+# and AIN'T syntax elements.
