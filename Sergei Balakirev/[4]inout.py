@@ -50,7 +50,7 @@ print(f'Perimeter: {(a + b) * 2}')
 
 # key-in through space
 
-# rectangles triangle
+# rectangles perimeter
 a, b = map(float, input('Rectangle Sides: ').split())
 print(f'Perimeter: {2 * (a + b)}')
 
