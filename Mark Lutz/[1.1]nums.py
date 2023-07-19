@@ -487,7 +487,7 @@ print(song)
 # ! Other Numeric Types !
 
 
-# * Numbers with Fixed Preciseness: Decimal *
+# * Fixed Precision Numbers: Decimal *
 # ? fixed amount of numbers after floating point, nums after point can be managed ?
 
 print(repr(0.1 + 0.1 + 0.1 - 0.3))  # result shoulda been 0; limited memory problems
@@ -666,3 +666,200 @@ print(x + 2.0, x + (4./3))
 print(x + Fraction(4, 3))  # so fucking beautiful thing
 
 # ? in case if Fraction starts losing precision use .limit_denominator() method ?
+
+
+# * Sets *
+
+# new type of collections was added in Python 2.4: sets
+# unordered sequence of immutable objects that support math operations
+# ? defining sets: each element can be contained in collection only once ?
+# regardless of how many times it was added
+print(f'{set} is neither a sequence nor a mapping although it can look like {dict}')
+# ? it's a seperate type category ?
+
+print('syntax: you give iterable object or seq. as an arg. while calling set() function')
+
+# e.g
+x = set('abcde')
+print(x)
+
+y = set(range(0, 10))
+print(y)
+# ! no indexing with sets, they're not sequences !
+
+print('e' in x)  # membership check
+# True
+
+z = set('bdxyz')
+print(x - z)  # difference of sets
+# {'e', 'c', 'a'}
+
+print(x | y)  # set union
+# list(range(10)) + list('abcde')
+
+
+print(x & z)  # set intersection
+# {'b', 'd'}  <-- they both have that in them
+
+
+print(x ^ z)  # symmetrical difference
+# {'a', 'y', 'e', 'c', 'x', 'z'}
+
+print(x > y, x < y)  # subset, superset
+# False, False
+
+
+# sets have methods that do the same as operators, plus extra functionality 
+
+# .add(): adds a new element to a set
+y.add(28)
+print(y)
+
+
+# .update(): unifies sets
+a = set(range(-10, 0))
+y.update(a)
+
+
+# .remove(): is yo ass stupid? don't you see the name of the method?
+y.remove(0)
+print(y)
+
+
+# .intersection(): again... same as a & b
+print(x.intersection(z))
+
+# ? sets: iterable containers. ?
+for item in y:
+    print(item ** 3)  # cube of each item
+
+# ! operators often only work with sets; but relative methods can deal with other seq !
+s = set(range(1, 4))
+# print(s | [3, 4])  # ! ERROR !
+print(s | set([3, 4]))
+
+# methods just convert sequences to sets in advance
+print(s.union([3, 4]))
+print(s.intersection((1, 3, 5)))
+print(s.issubset(range(-5, 5)))
+# all good
+
+
+# Set Literals in Python 3.0
+
+# besides function set(), now sets can be created as literals with {} (also for dicts)
+
+func = set([1, 2, 3, 4])
+print(func)
+
+lit = {1, 2, 3, 4}
+print(lit)   # same
+
+# ? set: dictioanly without values ?
+# sets are unordered sequence of unique and immutable objects; so keys of dicts are
+# from version 3.0, keys support intersection and union, isn't it strange?
+
+# set() func is still needed for creating empty sets or those that're based on iter.obj.
+# set comprehension also done using set(); but if content is known then use literals
+
+print(set([1, 2, 3, 4]))
+# built-in func; apart from 2.6
+
+print(set('spam'))
+# add all elements of iterable objects
+
+print({1, 2, 3, 4})  # set literals, new in 3.0
+# new literal presentation
+
+S = {'s', 'p', 'a', 'm'}
+print(S)
+
+S.add('alot')
+print(S)
+
+# all operations shown before work the same but output is made as a set literal
+S1 = {1, 2, 3, 4}
+
+# intersection
+print(S1 & {1, 3})
+
+# union
+print({1, 5, 3, 6} | S1)
+
+# difference
+print(S1 - {1, 3, 4})
+
+# superset
+print(S1 > {1, 3}, S1 < {1, 2, 3, 4, 5, 7, 24, 955, 0})  # superset & subset
+
+# empty set is displayed differently
+print(S1 - {1, 2, 3, 4})  # set()
+
+# literal {} means a dict
+print(type({}))
+
+# initiating empty set
+S = set()
+S.add(1.23)
+print(S)
+
+
+# since sets can contain only immutable hashable obj's; dicts and lists are OUT
+# nothing said about tuples, tho
+
+# S.add([1, 2, 3])  # ! TypeError: unhashable type: 'list'
+# S.add({'a': 1})  # ! unhashable type: 'dict'
+
+
+# tuples are equalized to their full values in operations on sets
+
+S.add((1, 2, 3))
+print(S)
+
+S = S | {(4, 5, 6), (1, 2, 3)}
+print(S)
+
+
+# membership is defined by tuple's full value
+print((1, 2, 3) in S)
+print((1, 4, 3) in S)
+
+# since sets are mutable; they can't be nested
+
+# ? but if you need one create one using func. frozenset(); a.k.a immutable set ?
+F = frozenset([1, 3, 4])
+S.add(F)
+print(S)
+
+
+# Set Comprehension
+
+# just like in list comprehension
+print({x ** 2 for x in [1, 2, 3, 4]})
+# ? <<Return new set, Containing squares of Xs' values, For each X in list>> ?
+
+
+# any other iterable objects is also welcome
+print({x for x in 'spam'})
+
+# more sauce
+print({c * 4 for c in 'spam'})
+
+
+# sets can be used to filter out duplicates in any other collection
+L = [1, 2, 1, 3, 2, 4, 5]
+print(L)
+
+# filtering out
+print(set(L))  # no duplicates
+
+# and then turn the switch back to primary value
+print(list(set(L)))  # re-convert it into list
+
+
+engineers = {'bob', 'sue', 'ann', 'vic'}
+managers = {'tom', 'sue'}
+print('bob' in engineers)  # is bob engineer?
+
+print(engineers & managers)  # who's both engineer and manager?
+print(engineers | managers)  # all employees
