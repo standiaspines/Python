@@ -20,7 +20,7 @@ print('>>> is a prompt invitation')
 # after they're typed out and Enter is pressed.
 
 
-print('Was an instruction in 2.6, became me a function in 3.0')
+print('Was an instruction in 2.6, became a function in 3.0')
 
 # since expressions are output automatically u DON'T print
 
@@ -50,7 +50,7 @@ print('Try it on interactive shell and look what happens')
 
 
 mltp = 'wendy!'*7
-# imagine u don't know what that is
+# imagine u don't know what this does
 
 '''
 >>> 'wendy!'*7
@@ -60,14 +60,14 @@ mltp = 'wendy!'*7
 'string duplication.'
 '''
 
-print('When with nums multiplication - num * num')
+print('When with nums: multiplication - num * num')
 
-print('When with str multiple concatenation - str + str + str')
+print('When with str: multiple concatenation - str + str + str')
 
 
 # Testing
 print('U can import ur own modules and check functionality')
-# and all that can be done in interactive shell
+# and all that can be done in the interactive shell
 
 '''
 >>> import os

@@ -79,7 +79,7 @@ print('There\'s no difference between Exe Env and Dev Env')
 
 # Frozen Compilation
 print('.pyc and PVM glued together')
-# .exe files that hide source code and can be run in any machine
+# .exe files hide source code and can be run in any machine
 
 print('py2exe', 'pyinstaller', 'freeze')
 
@@ -91,7 +91,7 @@ print('Source Code is code that u write down into files')
 
 print('Byte Code is translated and compiled version of s.c')
 
-print('PVM is machine that reads & performs byte code')
+print('PVM is machine reads & performs byte code')
 
 print('.py -> .pyc -> PVM | freeze .exe')
 
